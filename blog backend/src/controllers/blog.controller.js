@@ -35,7 +35,7 @@ const writeBlogController = async (req, res) => {
   
       // Respond with the saved blog post
       // res.status(201)
-      res.redirect("https://vercel-project-backend.vercel.app/api/v1/blog/yourblog")
+      res.redirect("/api/v1/blog/yourblog")
       // .json(new ApiResponse(200, {}, "Blog has been uploaded"))
     } catch (error) {
       console.log('Error saving blog post:', error);
