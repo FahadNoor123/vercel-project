@@ -12,7 +12,7 @@ dotenv.config({
     path: './.env'
 })
 const allowedOrigins = [
-    'https://vercel-project-kappa.vercel.app/',
+    'https://vercel-project-kappa.vercel.app',
     // Add more origins if needed
   ];
   
