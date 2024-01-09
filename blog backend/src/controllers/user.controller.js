@@ -146,7 +146,7 @@ const loginUser = asyncHandler(async (req, res) => {
   
       // Log a message indicating that cookies are being set
       console.log("Cookies are being set!");
-      res.redirect('/yourblog');
+      res.redirect('https://vercel-project-kappa.vercel.app/yourblog');
   
     } catch (error) {
       console.error("Error in loginUser:", error);
