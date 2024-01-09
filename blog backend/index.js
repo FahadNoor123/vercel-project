@@ -19,7 +19,7 @@ app.use(cors({
 app.get( '/', (req,res)=>{
     res.send('Server is Ready')
 })
-
+app.use(express.json()); 
 connectDB()
 .then(() => {
     app.listen(process.env.PORT || 3000, () => {
