@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import connectDB from "./src/db/index.js";
 // const cookieParser = require('cookie-parser');
 import cookieParser from 'cookie-parser';
+import express from 'express';
 app.use(cookieParser());
 
 import cors from 'cors'
