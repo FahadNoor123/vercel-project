@@ -131,18 +131,17 @@ const loginUser = asyncHandler(async (req, res) => {
       };
   
       res
-        .status(200)
-        .cookie("accessToken", accessToken, options)
-        .cookie("refreshToken", refreshToken, options)
-        .json(
-          new ApiResponse(200, {
-            user: logedInUser,
-            accessToken,
-            refreshToken,
-          },
-          "User Logged In Successfully"
-          )
-        );
+      .cookie("accessToken", accessToken, options)
+      .cookie("refreshToken", refreshToken, options)
+      .send(
+        new ApiResponse(200, {
+          user: logedInUser,
+          accessToken,
+          refreshToken,
+        },
+        "User Logged In Successfully"
+        )
+      );
   
       // Log a message indicating that cookies are being set
       console.log("Cookies are being set!");
