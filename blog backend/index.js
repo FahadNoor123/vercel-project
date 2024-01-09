@@ -8,15 +8,15 @@ dotenv.config({
     path: './.env'
 });
 
-const allowedOrigins = [
-    'https://vercel-project-kappa.vercel.app',
-    // Add more origins if needed
-];
+// const allowedOrigins = [
+//     'https://vercel-project-kappa.vercel.app',
+//     // Add more origins if needed
+// ];
 
 app.use(cookieParser());
 
 app.use(cors({
-    origin: allowedOrigins,
+    origin: '*',
     credentials: true,
 }));
 
