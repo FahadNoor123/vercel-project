@@ -134,19 +134,19 @@ const loginUser = asyncHandler(async (req, res) => {
         .status(200)
         .cookie("accessToken", accessToken, options)
         .cookie("refreshToken", refreshToken, options)
-        // .json(
-        //   new ApiResponse(200, {
-            // user: logedInUser,
-            // accessToken,
-            // refreshToken,
-        //   },
-        //   "User Logged In Successfully"
-        //   )
-        // );
+        .json(
+          new ApiResponse(200, {
+            user: logedInUser,
+            accessToken,
+            refreshToken,
+          },
+          "User Logged In Successfully"
+          )
+        );
   
       // Log a message indicating that cookies are being set
       console.log("Cookies are being set!");
-      res.redirect('https://vercel-project-kappa.vercel.app/yourblog');
+    //   res.redirect('https://vercel-project-kappa.vercel.app/yourblog');
   
     } catch (error) {
       console.error("Error in loginUser:", error);
