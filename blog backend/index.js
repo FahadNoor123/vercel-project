@@ -11,10 +11,15 @@ import {app} from './src/app.js'
 dotenv.config({
     path: './.env'
 })
-app.use(cors({
-    origin: '*',
+const allowedOrigins = [
+    'https://vercel-project-kappa.vercel.app',
+    // Add more origins if needed
+  ];
+  
+  app.use(cors({
+    origin: allowedOrigins,
     credentials: true,
-}));
+  }));
 app.get( '/', (req,res)=>{
     res.send('Server is Ready')
 })
