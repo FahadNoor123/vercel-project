@@ -37,7 +37,7 @@ const WriteBlog = () => {
   };
 
   return (
-    <form action="/api/v1/blog/blogwrite" method="POST" encType="application/json">
+    <form action="https://vercel-project-backend.vercel.app/api/v1/blog/blogwrite" method="POST" encType="application/json">
       <div className="container mx-auto mt-8">
         <h2 className="text-3xl font-semibold mb-4">Write a New Blog</h2>
 

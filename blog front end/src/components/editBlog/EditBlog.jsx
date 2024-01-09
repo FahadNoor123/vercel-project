@@ -14,7 +14,7 @@ function EditBlog() {
     // Fetch blog details using blogId and update state
     const fetchBlogDetails = async () => {
       try {
-        const response = await fetch(`/api/v1/blog/${blogId}`);
+        const response = await fetch(`https://vercel-project-backend.vercel.app/api/v1/blog/${blogId}`);
         if (response.ok) {
           const data = await response.json();
           setEditedBlog({
