@@ -3,6 +3,7 @@ import connectDB from "./src/db/index.js";
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import { app } from './src/app.js'; // Corrected import
+import cors from 'cors';
 
 dotenv.config({
     path: './.env'
@@ -14,11 +15,11 @@ dotenv.config({
 // ];
 
 app.use(cookieParser());
-
 app.use(cors({
     origin: '*',
     credentials: true,
 }));
+
 
 app.get('/', (req, res) => {
     res.send('Server is Ready');
