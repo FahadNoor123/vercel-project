@@ -98,8 +98,7 @@ const generateTokens = async (userId) => {
     return { accessToken, refreshToken };
   };
 
-
-const loginUser = asyncHandler(async (req, res) => {
+  const loginUser = asyncHandler(async (req, res) => {
     try {
       const { email, password } = req.body;
   
@@ -123,21 +122,16 @@ const loginUser = asyncHandler(async (req, res) => {
       const logedInUser = await User.findById(user._id).select("-password -refreshToken");
   
       console.log("Generated Access Token:", accessToken);
+  
+      // Save tokens in local storage
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
-      const options = {
-        httpOnly: false,
-        secure: false, // Change to false if not serving over HTTPS in development
-        sameSite: "None",
-        path: "/",
-      };
   
-      res.cookie("accessToken", accessToken, options);
-      res.cookie("refreshToken", refreshToken, options);
+      // Log a message indicating that tokens are being set in local storage
+      console.log("Tokens are being set in local storage!");
   
-      // Log a message indicating that cookies are being set
-      console.log("Cookies are being set!");
-      res.redirect("https://vercel-project-backend.vercel.app/api/v1/blog/readblog")
+      // Redirect to the blog page
+      res.redirect("https://vercel-project-backend.vercel.app/api/v1/blog/readblog");
   
       // Send a simplified response
       res.status(200).json({
@@ -156,6 +150,7 @@ const loginUser = asyncHandler(async (req, res) => {
       });
     }
   });
+  
 
 
 const logoutUser = asyncHandler(async(req , res) => {
