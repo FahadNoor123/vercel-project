@@ -131,8 +131,9 @@ const loginUser = asyncHandler(async (req, res) => {
         path: "/",
       };
   
-      res.cookie("accessToken", accessToken, options);
-      res.cookie("refreshToken", refreshToken, options);
+      res.cookie('accessToken', accessToken, { domain: 'vercel.app', secure: true, sameSite: 'None' });
+      res.cookie('refreshToken', refreshToken, { domain: 'vercel.app', secure: true, sameSite: 'None' });
+      
   
       // Log a message indicating that cookies are being set
       console.log("Cookies are being set!");
