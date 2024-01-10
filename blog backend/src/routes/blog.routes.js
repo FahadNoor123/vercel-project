@@ -24,7 +24,7 @@ blogRouter.route("/readblog").get( async (req, res) => {
     }
   });
 
-  blogRouter.route("/yourblog").get( async (req, res) => {
+  blogRouter.route("/yourblog").get(verifyJWT, async (req, res) => {
     try {
       // Assuming you have a Blog model
       const blogs = await Blog.find({ author: req.user.username }).select("-author");
