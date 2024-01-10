@@ -125,36 +125,35 @@ const loginUser = asyncHandler(async (req, res) => {
       console.log("Generated Access Token:", accessToken);
   
       const options = {
-        httpOnly: false,
-        secure: false,
+        httpOnly: true,
+        secure: true, // Change to false if not serving over HTTPS in development
         sameSite: "None",
         path: "/",
-        
       };
   
-      res
-      .cookie("accessToken", accessToken, options)
-      .cookie("refreshToken", refreshToken, options)
-      .send(
-        new ApiResponse(200, {
-          user: logedInUser,
-          accessToken,
-          refreshToken,
-        },
-        "User Logged In Successfully"
-        )
-      );
+      res.cookie("accessToken", accessToken, options);
+      res.cookie("refreshToken", refreshToken, options);
   
       // Log a message indicating that cookies are being set
       console.log("Cookies are being set!");
-    //   res.redirect('https://vercel-project-kappa.vercel.app/yourblog');
   
+      // Send a simplified response
+      res.status(200).json({
+        user: logedInUser,
+        accessToken,
+        refreshToken,
+        message: "User Logged In Successfully",
+      });
     } catch (error) {
       console.error("Error in loginUser:", error);
-      res.status(error.status || 500).json(new ApiResponse(error.status || 500, null, error.message));
+      res.status(error.status || 500).json({
+        error: {
+          status: error.status || 500,
+          message: error.message,
+        },
+      });
     }
   });
-  
 
 
 const logoutUser = asyncHandler(async(req , res) => {
