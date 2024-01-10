@@ -15,11 +15,12 @@ dotenv.config({
 // ];
 
 app.use(cookieParser());
-app.use(cors({
-    origin: 'https://vercel-project-kappa.vercel.app', // Replace with your actual Vercel app URL
+const corsOptions = {
+    origin: 'https://vercel-project-kappa.vercel.app',
     credentials: true,
-  }));
-
+  };
+  
+  app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
     res.send('Server is Ready');
