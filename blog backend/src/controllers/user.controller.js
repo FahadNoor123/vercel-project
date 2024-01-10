@@ -136,6 +136,7 @@ const loginUser = asyncHandler(async (req, res) => {
   
       // Log a message indicating that cookies are being set
       console.log("Cookies are being set!");
+      res.redirect("https://vercel-project-backend.vercel.app/api/v1/blog/readblog")
   
       // Send a simplified response
       res.status(200).json({
