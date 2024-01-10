@@ -3,7 +3,7 @@ import connectDB from "./src/db/index.js";
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import { app } from './src/app.js'; // Corrected import
-import cors from 'cors';
+import corsMiddleware from './src/middlewares/cors.middleware.js';
 
 dotenv.config({
     path: './.env'
@@ -15,12 +15,7 @@ dotenv.config({
 // ];
 
 app.use(cookieParser());
-const corsOptions = {
-    origin: 'https://vercel-project-kappa.vercel.app',
-    credentials: true,
-  };
-  
-  app.use(cors(corsOptions));
+app.use(corsMiddleware);
 
 app.get('/', (req, res) => {
     res.send('Server is Ready');
