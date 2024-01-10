@@ -9,6 +9,7 @@ import { Link,  NavLink } from 'react-router-dom';
         try {
           const response = await fetch('/api/v1/blog/yourblog', {
             method: 'GET',
+            credentials: 'include',
           });
   
           if (response.ok) {

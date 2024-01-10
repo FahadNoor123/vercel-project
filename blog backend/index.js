@@ -16,9 +16,9 @@ dotenv.config({
 
 app.use(cookieParser());
 app.use(cors({
-    origin: '*',
+    origin: 'https://vercel-project-kappa.vercel.app', // Replace with your actual Vercel app URL
     credentials: true,
-}));
+  }));
 
 
 app.get('/', (req, res) => {
