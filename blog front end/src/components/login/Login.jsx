@@ -18,7 +18,7 @@ function Login() {
     setLoginClicked(false);}
 
     const handleRegisterClick = () => {
-      setFormAction('/api/v1/users/register');
+      setFormAction('https://vercel-project-backend.vercel.app/api/v1/users/register');
       setFormMethod('POST');
       setFormEncType('multipart/form-data');
     };
