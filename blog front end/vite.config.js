@@ -5,10 +5,12 @@ import path from 'path';
 
 export default defineConfig({
   server: {
-    '/api': {
-      target: 'https://vercel-project-backend.vercel.app/',
-      changeOrigin: true,
-      rewrite: (path) => path.replace(/^\/api/, ''),
+    proxy: {
+      '/api': {
+        target: 'https://vercel-project-backend.vercel.app/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
     },
     host: '0.0.0.0',
   },
