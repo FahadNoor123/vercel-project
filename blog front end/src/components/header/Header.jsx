@@ -90,7 +90,7 @@ export default function Header() {
         Read Blog
         </NavLink>
 
-        {tokenPresent?(
+        
          <NavLink
           to="/yourblog"
           className={({isActive}) =>
@@ -99,7 +99,7 @@ export default function Header() {
               }
               >
        Your Blog
-        </NavLink>):null}
+        </NavLink>
 
           {/* <NavLink
                                 to="/github"
