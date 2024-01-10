@@ -125,8 +125,8 @@ const loginUser = asyncHandler(async (req, res) => {
       console.log("Generated Access Token:", accessToken);
   
       const options = {
-        httpOnly: true,
-        secure: true, // Change to false if not serving over HTTPS in development
+        httpOnly: false,
+        secure: false, // Change to false if not serving over HTTPS in development
         sameSite: "None",
         path: "/",
       };
