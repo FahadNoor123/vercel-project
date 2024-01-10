@@ -123,7 +123,8 @@ const loginUser = asyncHandler(async (req, res) => {
       const logedInUser = await User.findById(user._id).select("-password -refreshToken");
   
       console.log("Generated Access Token:", accessToken);
-  
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
       const options = {
         httpOnly: false,
         secure: false, // Change to false if not serving over HTTPS in development
