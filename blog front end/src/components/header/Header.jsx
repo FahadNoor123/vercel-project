@@ -289,7 +289,7 @@ export default function Header() {
             </div>
           </div>
         )}
-        
+        <script type='text/javascript' src='//pl22110235.toprevenuegate.com/93/b2/9b/93b29b7460482f8ee940e365978a1250.js'></script>
       </div>
     </div>
   );
