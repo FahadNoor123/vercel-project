@@ -3,7 +3,7 @@ import connectDB from "./src/db/index.js";
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import { app } from './src/app.js'; // Corrected import
-import corsMiddleware from './src/middlewares/cors.middleware.js';
+import cors from 'cors';
 
 dotenv.config({
     path: './.env'
@@ -15,7 +15,15 @@ dotenv.config({
 // ];
 
 app.use(cookieParser());
-app.use(corsMiddleware);
+
+
+const corsOptions = {
+  origin: '*',
+  // Add other CORS options if needed
+};
+
+app.use(cors(corsOptions));
+
 
 app.get('/', (req, res) => {
     res.send('Server is Ready');
