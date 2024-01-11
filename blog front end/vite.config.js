@@ -9,7 +9,7 @@ export default defineConfig({
 
   server: {
     proxy: {
-      '/api': {
+      '/apis': {
         target:'https://vercel-project-backend.vercel.app/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
