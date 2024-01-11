@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import { Menu, X } from 'lucide-react'
 
@@ -289,7 +290,9 @@ export default function Header() {
             </div>
           </div>
         )}
+         <Helmet>
         <script type='text/javascript' src='//pl22110235.toprevenuegate.com/93/b2/9b/93b29b7460482f8ee940e365978a1250.js'></script>
+      </Helmet>
       </div>
     </div>
   );
