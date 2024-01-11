@@ -6,7 +6,7 @@ import writeBlogController from "../controllers/blog.controller.js";
 
 const blogRouter = Router();
 
-blogRouter.route("/blogwrite").post(verifyJWT, writeBlogController);
+blogRouter.route("/blogwrite").post(writeBlogController);
 
 
 blogRouter.route("/readblog").get( async (req, res) => {
