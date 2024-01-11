@@ -7,7 +7,7 @@ import { Link,  NavLink } from 'react-router-dom';
     useEffect(() => {
       const fetchBlogs = async () => {
         try {
-          const response = await fetch('/api/v1/blog/yourblog', {
+          const response = await fetch('https://vercel-project-backend.vercel.app/api/v1/blog/yourblog', {
             method: 'GET',
             credentials: 'include',
           });
