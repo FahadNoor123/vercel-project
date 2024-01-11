@@ -78,7 +78,7 @@ export default function Header() {
                         }
             >
          Write Blog
-         </NavLink>)
+         </NavLink>
                               
         <NavLink
             to="/readblog"
