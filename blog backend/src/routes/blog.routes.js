@@ -9,7 +9,7 @@ const blogRouter = Router();
 blogRouter.route("/blogwrite").post(writeBlogController);
 
 
-blogRouter.route("/readblog").get(verifyJWT, async (req, res) => {
+blogRouter.route("/readblog").get( async (req, res) => {
     try {
       // Assuming you have a Blog model
       const blogs = await Blog.find().select("-author");
@@ -24,7 +24,7 @@ blogRouter.route("/readblog").get(verifyJWT, async (req, res) => {
     }
   });
 
-  blogRouter.route("/yourblog").get( async (req, res) => {
+  blogRouter.route("/yourblog").get(verifyJWT, async (req, res) => {
     try {
       // Assuming you have a Blog model
       const blogs = await Blog.find({ author: req.user.username }).select("-author");
