@@ -18,8 +18,7 @@ app.use(cookieParser());
 
 
 
-  
-  app.use(cors(corsOptions));
+
 
 
 app.get('/', (req, res) => {
