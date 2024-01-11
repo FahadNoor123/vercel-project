@@ -9,7 +9,7 @@ import { Link,  NavLink } from 'react-router-dom';
         try {
           const response = await fetch('https://vercel-project-backend.vercel.app/api/v1/blog/yourblog', {
             method: 'GET',
-            credentials: 'include',
+          
           });
   
           if (response.ok) {
