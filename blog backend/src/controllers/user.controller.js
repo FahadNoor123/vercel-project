@@ -131,8 +131,9 @@ const loginUser = asyncHandler(async (req, res) => {
         path: "/",
       };
   
-      res.cookie('accessToken', accessToken, { domain: 'vercel-project-kappa.vercel.app', secure: true, sameSite: 'None' });
-      res.cookie('refreshToken', refreshToken, { domain: 'vercel-project-kappa.vercel.app', secure: true, sameSite: 'None' });
+      res.cookie('accessToken', accessToken, { domain: 'vercel-project-kappa.vercel.app', secure: true, sameSite: 'None', path: '/' });
+      res.cookie('refreshToken', refreshToken, { domain: 'vercel-project-kappa.vercel.app', secure: true, sameSite: 'None', path: '/' });
+      
       
   
       // Log a message indicating that cookies are being set
