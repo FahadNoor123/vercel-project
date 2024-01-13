@@ -126,7 +126,7 @@ const generateTokens = async (userId) => {
       const options = {
         httpOnly: false,
         secure: true, // Change to false if not serving over HTTPS in development
-        sameSite: "None",
+        sameSite: "Lax",
         path: "/",
       };
   
