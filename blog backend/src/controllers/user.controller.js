@@ -98,8 +98,7 @@ const generateTokens = async (userId) => {
     return { accessToken, refreshToken };
   };
 
-
-const loginUser = asyncHandler(async (req, res) => {
+  const loginUser = asyncHandler(async (req, res) => {
     try {
       const { email, password } = req.body;
   
@@ -123,22 +122,20 @@ const loginUser = asyncHandler(async (req, res) => {
       const logedInUser = await User.findById(user._id).select("-password -refreshToken");
   
       console.log("Generated Access Token:", accessToken);
-    
+  
       const options = {
         httpOnly: false,
-        secure: false, // Change to false if not serving over HTTPS in development
+        secure: true, // Change to false if not serving over HTTPS in development
         sameSite: "None",
         path: "/",
       };
   
       res.cookie('accessToken', accessToken, { domain: 'vercel-project-kappa.vercel.app', secure: true, sameSite: 'None', path: '/' });
       res.cookie('refreshToken', refreshToken, { domain: 'vercel-project-kappa.vercel.app', secure: true, sameSite: 'None', path: '/' });
-      
-      
   
       // Log a message indicating that cookies are being set
       console.log("Cookies are being set!");
-      
+  
       // Send a simplified response
       res.status(200).json({
         user: logedInUser,
@@ -146,8 +143,10 @@ const loginUser = asyncHandler(async (req, res) => {
         refreshToken,
         message: "User Logged In Successfully",
       });
-      res.redirect("https://vercel-project-backend.vercel.app/api/v1/blog/readblog")
   
+      // Redirect after sending the response
+      // Uncomment the next line if you still want to redirect
+      // res.redirect("https://vercel-project-backend.vercel.app/api/v1/blog/readblog");
     } catch (error) {
       console.error("Error in loginUser:", error);
       res.status(error.status || 500).json({
@@ -158,7 +157,7 @@ const loginUser = asyncHandler(async (req, res) => {
       });
     }
   });
-
+  
 
 const logoutUser = asyncHandler(async(req , res) => {
  User.findByIdAndUpdate(
