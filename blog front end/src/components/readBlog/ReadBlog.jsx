@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
       const fetchBlogs = async () => {
         try {
           const response = await fetch('/api/v1/blog/readblog', {
-            
+            credentials: 'include', 
             method: 'GET',
           });
   
