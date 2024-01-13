@@ -5,6 +5,7 @@ function Login() {
   const [formAction, setFormAction] = useState('https://vercel-project-backend.vercel.app/api/v1/users/login');
   const [formMethod, setFormMethod] = useState('POST');
   const [formEncType, setFormEncType] = useState('');
+  const [headere, setHeadere] = useState({'Content-Type': 'application/x-www-form-urlencoded'});
 
   const [showAdditionalFields, setShowAdditionalFields] = useState(false);
   const handleLoginClick = () => {
@@ -81,7 +82,7 @@ function Login() {
     </p> )}
       
      
-      <form  action={formAction} method={formMethod} encType={formEncType} className="mt-8" credentials="include" >
+      <form  action={formAction} method={formMethod} encType={formEncType}  headers={headere} className="mt-8" credentials="include" >
         <div className="space-y-5">
           <div>
             <label for="" className="text-base font-medium text-gray-900">
