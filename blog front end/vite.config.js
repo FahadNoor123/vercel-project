@@ -9,14 +9,10 @@ export default defineConfig({
 
   server: {
     proxy: {
-      '/api': {
-        target: 'https://vercel-project-backend.vercel.app/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': '',
-        },
-      },
+      // '/api': 'http://localhost:3000/',
+      '/api': 'https://backend-of-blog.vercel.app/',
     },
+    host: '0.0.0.0',
   },
   plugins: [react()],
   resolve: {
