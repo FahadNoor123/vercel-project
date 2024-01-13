@@ -126,12 +126,13 @@ const generateTokens = async (userId) => {
       const options = {
         httpOnly: false,
         secure: true, // Change to false if not serving over HTTPS in development
-        sameSite: "Lax",
+        sameSite: "None",
         path: "/",
       };
   
-      res.cookie('accessToken', accessToken, { domain: 'vercel-project-kappa.vercel.app', secure: true, sameSite: 'None', path: '/' });
-      res.cookie('refreshToken', refreshToken, { domain: 'vercel-project-kappa.vercel.app', secure: true, sameSite: 'None', path: '/' });
+      res.cookie('myAccessToken', accessToken, { sameSite: 'None', path: '/' });
+      res.cookie('myRefreshToken', refreshToken, { sameSite: 'None', path: '/' });
+      
   
       // Log a message indicating that cookies are being set
       console.log("Cookies are being set!");
