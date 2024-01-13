@@ -7,7 +7,7 @@ import cors from 'cors';
 
 const app = express();
 const corsOptions = {
-    origin: 'https://vercel-project-kappa.vercel.app',
+    origin: '*',
     credentials: true,
     // other CORS options if needed
   };
