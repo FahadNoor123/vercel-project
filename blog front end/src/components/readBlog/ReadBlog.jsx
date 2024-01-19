@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import AdsterraAd from '../adstera/AdsterraAd';
 
 const ReadBlog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -41,7 +40,7 @@ const ReadBlog = () => {
           <>
             {/* Include AdsterraAd component outside the map */}
          
-              <AdsterraAd/>
+             
             {/* Map through blogs array */}
             {blogs.map((blog) => (
               <div key={blog._id} className="bg-white rounded-md overflow-hidden shadow-md">
@@ -57,7 +56,7 @@ const ReadBlog = () => {
           </>
         )}
       </div>
-      <AdsterraAd/>
+      
     </div>
   );
 };
