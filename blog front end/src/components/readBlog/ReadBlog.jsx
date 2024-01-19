@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const ReadBlog = () => {
   const [blogs, setBlogs] = useState([]);
+  const [showFullContent, setShowFullContent] = useState([]);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -15,6 +16,7 @@ const ReadBlog = () => {
           const { blogs } = await response.json();
           console.log('Blogs Data:', blogs);
           setBlogs(blogs);
+          setShowFullContent(new Array(blogs.length).fill(false));
         } else {
           console.error('Failed to fetch blogs');
         }
@@ -26,37 +28,55 @@ const ReadBlog = () => {
     fetchBlogs();
   }, []);
 
-
+  const handleReadMore = (index) => {
+    setShowFullContent((prev) => {
+      const newState = [...prev];
+      newState[index] = !newState[index];
+      return newState;
+    });
+  };
 
   return (
     <div className="container mx-auto mt-8">
       <h2 className="text-3xl font-semibold mb-4">Read Blogs</h2>
 
-      {/* Adsterra Ad Code */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs.length === 0 ? (
           <p className="text-gray-700">No blogs available</p>
         ) : (
           <>
-            {/* Include AdsterraAd component outside the map */}
-         
-             
-            {/* Map through blogs array */}
-            {blogs.map((blog) => (
+            {blogs.map((blog, index) => (
               <div key={blog._id} className="bg-white rounded-md overflow-hidden shadow-md">
                 <div className="p-6">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="text-2xl font-semibold">{blog.title}</h3>
                     <p className="text-xs text-gray-500">{`Posted on ${new Date(blog.createdAt).toLocaleString()}`}</p>
                   </div>
-                  <p className="text-gray-800">{blog.content}</p>
+                  {showFullContent[index] ? (
+                    <p className="text-gray-800">{blog.content}</p>
+                  ) : (
+                    <p className="text-gray-800">
+                      {`${blog.content.slice(0, 100)}...`}{' '}
+                      <button
+                        onClick={() => handleReadMore(index)}
+                        style={{
+                          backgroundColor: 'black',
+                          color: 'white',
+                          padding: '6px 12px', // Adjusted padding for a smaller button
+                          borderRadius: '3px', // Adjusted border radius for a smaller button
+                          cursor: 'pointer',
+                        }}
+                      >
+                        Read More
+                      </button>
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
           </>
         )}
       </div>
-      
     </div>
   );
 };
