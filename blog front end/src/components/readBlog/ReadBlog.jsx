@@ -7,7 +7,7 @@ const ReadBlog = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch('/api/v1/blog/readblog', {
+        const response = await fetch('https://vercel-project-backend.vercel.app/api/v1/blog/readblog', {
           credentials: 'include',
           method: 'GET',
         });
