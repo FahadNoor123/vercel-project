@@ -16,7 +16,7 @@ import WriteBlog from '@components/writeBlog/WriteBlog.jsx'
 import ReadBlog from '@components/readBlog/ReadBlog.jsx'
 import YourBlog from '@components/yourBlog/YourBlog.jsx'
 import EditBlog from '@components/editBlog/EditBlog.jsx'
-
+import DetailBlog from './components/detailblog/DetailBlog.jsx'
 
 // const router=createBrowserRouter([
 //   {
@@ -47,6 +47,7 @@ const router=createBrowserRouter(
       <Route path="writeblog" element={<WriteBlog/>}/>
       <Route path="readblog" element={<ReadBlog/>}/>
       <Route path="yourblog" element={<YourBlog/>}/>
+      <Route path="detailblog/:blogId" element={<DetailBlog/>}/>
       <Route path="editblog/:blogId" element={<EditBlog/>}/>
       <Route path="login" element={<Login/>}/>
       <Route path="user/:userid" element={<User/>}/>
