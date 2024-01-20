@@ -21,7 +21,7 @@ const ReadBlog = () => {
           console.error('Failed to fetch blogs');
         }
       } catch (error) {
-        console.error('Error fetching blogs:', error);
+        console.error('Error fetching blogss:', error);
       }
     };
 
