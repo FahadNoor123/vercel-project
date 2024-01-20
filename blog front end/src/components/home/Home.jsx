@@ -1,50 +1,75 @@
-import React from "react";
-import { Link} from 'react-router-dom';
-
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
-    return (
-        <div className="mx-auto w-full max-w-7xl">
-            <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-16">
-                <div className="relative z-10 max-w-screen-xl px-4  pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
-                    <div className="max-w-xl sm:mt-1 mt-80 space-y-8 text-center sm:text-right sm:ml-auto">
-                        <h2 className="text-4xl font-bold sm:text-5xl">
-                            Download Now
-                            <span className="hidden sm:block text-4xl">Lorem Ipsum</span>
-                        </h2>
+  const [blogs, setBlogs] = useState([]);
+  const [showFullContent, setShowFullContent] = useState([]);
 
-                        <Link
-                            className="inline-flex text-white items-center px-6 py-3 font-medium bg-orange-700 rounded-lg hover:opacity-75"
-                            to="/"
-                        >
-                            <svg
-                                fill="white"
-                                width="24"
-                                height="24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fillRule="evenodd"
-                                clipRule="evenodd"
-                            >
-                                <path d="M1.571 23.664l10.531-10.501 3.712 3.701-12.519 6.941c-.476.264-1.059.26-1.532-.011l-.192-.13zm9.469-11.56l-10.04 10.011v-20.022l10.04 10.011zm6.274-4.137l4.905 2.719c.482.268.781.77.781 1.314s-.299 1.046-.781 1.314l-5.039 2.793-4.015-4.003 4.149-4.137zm-15.854-7.534c.09-.087.191-.163.303-.227.473-.271 1.056-.275 1.532-.011l12.653 7.015-3.846 3.835-10.642-10.612z" />
-                            </svg>
-                            &nbsp; Download now
-                        </Link>
-                        
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch("https://vercel-project-backend.vercel.app/api/v1/blog/readblog", {
+          credentials: "include",
+          method: "GET",
+        });
 
-                    </div>
-                </div>
+        if (response.ok) {
+          const { blogs } = await response.json();
+          console.log("Blogs Data:", blogs);
+          setBlogs(blogs);
+          setShowFullContent(new Array(blogs.length).fill(false));
+        } else {
+          console.error("Failed to fetch blogs");
+        }
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    };
 
-                <div className="absolute inset-0 w-full sm:my-20 sm:pt-1 pt-12 h-full ">
-                    <img className="w-96" src="https://i.ibb.co/5BCcDYB/Remote2.png" alt="image1" />
-                </div>
-            </aside>
+    fetchBlogs();
+  }, []);
 
-            <div className="grid  place-items-center sm:mt-20">
-                <img className="sm:w-96 w-48" src="https://i.ibb.co/2M7rtLk/Remote1.png" alt="image2" />
-            </div>
+  // const handleReadMore = (index) => {
+  //   setShowFullContent((prev) => {
+  //     const newState = [...prev];
+  //     newState[index] = !newState[index];
+  //     return newState;
+  //   });
+  // };
 
-            <script type='text/javascript' src='//pl22110235.toprevenuegate.com/93/b2/9b/93b29b7460482f8ee940e365978a1250.js'></script>
-            <h1 className="text-center text-2xl sm:text-5xl py-10 font-medium">Lorem Ipsum Yojo</h1>
+  return (
+    <div className="bg-gray-100 min-h-screen">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-green-500 to-blue-500 text-white py-16">
+        <div className="container mx-auto text-center">
+          <h2 className="text-5xl font-extrabold mb-4">Stay Informed with the Latest News</h2>
+          <p className="text-lg mb-8">Get the latest updates and insights from the automotive world.</p>
         </div>
-    );
+      </section>
+
+      {/* News Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-semibold mb-8">Latest News</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogs.map((blog, index) => (
+              <div key={blog._id} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                <img src={blog.blogimg} alt={blog.title} className="w-full h-48 object-cover mb-4 rounded" />
+                <h3 className="text-2xl font-semibold mb-2">{blog.title}</h3>
+                {showFullContent[index] ? (
+                  <p className="text-gray-700">{blog.content}</p>
+                ) : (
+                  <p className="text-gray-700">{`${blog.content.slice(0, 100)}...`}</p>
+                )}
+               <br/>
+                <Link to={{ pathname: `/detailblog/${blog._id}`, state: { blog } }} className="mt-4 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300">
+                  Read More
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }
