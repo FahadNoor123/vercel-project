@@ -211,33 +211,36 @@ const refreshAccessToken = asyncHandler(async(req , res) => {
     }
  
  
-    const options={
-     httpOnly:true,
-     secure:true
+    const options = {
+        httpOnly: false,
+        secure: false,
+        
+      };
+  
+      res
+        .status(200)
+        .cookie("accessToken", accessToken, options)
+        .cookie("refreshToken", refreshToken, options)
+        // .json(
+        //   new ApiResponse(200, {
+            // user: logedInUser,
+            // accessToken,
+            // refreshToken,
+        //   },
+        //   "User Logged In Successfully"
+        //   )
+        // );
+  
+      // Log a message indicating that cookies are being set
+      console.log("Cookies are being set!");
+      res.redirect('/yourblog');
+  
+    } catch (error) {
+      console.error("Error in loginUser:", error);
+      res.status(error.status || 500).json(new ApiResponse(error.status || 500, null, error.message));
     }
- 
- 
-    const {accessToken , newrefreshToken}=await generateAccessAndReferenshTokens(user._id)
- 
-    return res
-    .status(200)
-    .cookie("access Token", accessToken, options)
-    .cookie("access Token", newrefreshToken, options)
-    .json(
-         new ApiResponse(
-            200,
-            {
-             accessToken , refreshToken:newrefreshToken
-            },
-            "Access Token Refresh Successfuly"
-         )
-    )
-   } catch (error) {
-        throw new ApiError(401, error?.message||"Invalid Refresh Token")
-   }
-
-
-})
+  });
+  
 
 
 const changeCurrentPassword = asyncHandler(async(req , res) =>{
