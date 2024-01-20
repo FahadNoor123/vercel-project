@@ -6,12 +6,11 @@ import blogRouter from "./routes/blog.routes.js";
 import cors from 'cors';
 
 const app = express();
-const corsOptions = {
-    origin: 'https://vercel-project-kappa.vercel.app',
-    credentials: true,
-    // other CORS options if needed
-  };
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: ['https://bloger-website-gamma.vercel.app', 'https://vercel-project-kappa.vercel.app'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add the HTTP methods you want to allow
+}));
 
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));

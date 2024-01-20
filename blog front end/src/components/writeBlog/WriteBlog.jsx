@@ -37,12 +37,26 @@ const WriteBlog = () => {
   };
 
   return (
-    <form action="https://vercel-project-backend.vercel.app/api/v1/blog/blogwrite" method="POST" encType="application/json">
+    <form action="https://vercel-project-backend.vercel.app/api/v1/blog/blogwrite" method="POST" enctype="multipart/form-data">
       <div className="container mx-auto mt-8">
         <h2 className="text-3xl font-semibold mb-4">Write a New Blog</h2>
 
         <div className="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+            <div className="mb-4">
+        <label htmlFor="blogimg" className="text-sm text-gray-600">
+          Upload Image
+        </label>
+        <input
+          name="blogimg"
+          type="file"
+          id="blogimg"
+          accept="image/*"
+          className="w-full border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500"
+          required
+        />
+      </div>
           <div className="mb-4">
+            
             <label htmlFor="title" className="text-sm text-gray-600">
               Blog Title
             </label>
