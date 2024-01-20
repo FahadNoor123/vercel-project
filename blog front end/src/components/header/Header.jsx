@@ -120,15 +120,7 @@ export default function Header() {
           >
             Contact us
             </NavLink>
-            <a
-                // href="https://www.toprevenuegate.com/fvgwcwsdv8?key=843569f951521da097a8ba0935089fe8"
-                className={({ isActive }) =>
-                  `text-sm font-semibold text-gray-800 hover:text-gray-900 ${isActive ? "text-orange-700" : "text-gray"}`
-                }
-                target="_blank"  // Add target="_blank" to open the link in a new tab
-              >
-                Easy withdraw Money
-              </a>
+          
         </div>
         {/* Other elements in your header */}
         {/* ... */}
@@ -254,15 +246,7 @@ export default function Header() {
           >
             Contact
             </NavLink>
-            <a
-                href=""
-                className={({ isActive }) =>
-                  `text-sm font-semibold text-gray-800 hover:text-gray-900 ${isActive ? "text-orange-700" : "text-gray"}`
-                }
-                target="_blank"  // Add target="_blank" to open the link in a new tab
-              >
-                Easy withdraw Money
-              </a>
+         
                   </nav>
                 </div>
                 
