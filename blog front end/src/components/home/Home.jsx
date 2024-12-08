@@ -8,6 +8,7 @@ export default function Home() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
+        // const response = await fetch("https://vercel-project-backend.vercel.app/api/v1/blog/readblog",
         const response = await fetch("https://vercel-project-backend.vercel.app/api/v1/blog/readblog", {
           credentials: "include",
           method: "GET",
@@ -40,17 +41,17 @@ export default function Home() {
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-500 to-blue-500 text-white py-16">
+      <section className="bg-gradient-to-r from-green-500 to-blue-500 text-white py-5">
         <div className="container mx-auto text-center">
-          <h2 className="text-5xl font-extrabold mb-4">Stay Informed with the Latest News</h2>
-          <p className="text-lg mb-8">Get the latest updates and insights from the automotive world.</p>
+          <h2 className="text-5xl font-extrabold mb-2">Stay Informed with the Latest News</h2>
+          <p className="text-lg mb-2">Get the latest updates and insights from the automotive world.</p>
         </div>
       </section>
 
       {/* News Section */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-2 bg-gray-100">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-semibold mb-8">Latest News</h2>
+          <h2 className="text-4xl font-semibold mb-2">Latest News</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogs.map((blog, index) => (
               <div key={blog._id} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
