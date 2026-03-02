@@ -7,6 +7,7 @@ import About from '@components/about/About'
 import Home from '@components/home/Home.jsx'
 import Layout from './Layout.jsx';
 import Contact from '@components/contact/Contact.jsx'
+import Gallery from '@components/gallery/Gallery.jsx'
 import { Route } from 'react-router-dom'
 import User from '@components/user/User.jsx'
 import Login from '@components/login/Login.jsx'
@@ -44,6 +45,7 @@ const router=createBrowserRouter(
       <Route path="" element={<Home/>}/>
       <Route path="about" element={<About/>}/>
       <Route path="contact" element={<Contact/>}/>
+      <Route path="gallery" element={<Gallery/>}/>
       <Route path="writeblog" element={<WriteBlog/>}/>
       <Route path="readblog" element={<ReadBlog/>}/>
       <Route path="yourblog" element={<YourBlog/>}/>
